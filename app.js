@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const {Item,List} = require("./Item");
 const _ = require("lodash");
 
-mongoose.connect('mongodb+srv://sasindusenanayake8864:Y9FdWr83fS78ujNw@cluster0.nltwjpd.mongodb.net/todolistDB');
+mongoose.connect(process.env.MONGODB_URL);
 
 const app = express();
 
@@ -140,6 +140,6 @@ app.get("/about", function(req, res) {
   res.render("about");
 });
 
-app.listen(3000, function() {
+app.listen(process.env.PORT||3000, function() {
   console.log("Server started on port 3000");
 });
